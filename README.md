@@ -3,143 +3,14 @@ A scalable end-to-end clickstream analytics pipeline built using Apache Spark an
 
 Clickstream Analytics Pipeline Using Apache Spark & Delta Lake
 
-This repository contains an end-to-end big data analytics pipeline designed to process, optimize, and analyze large-scale clickstream data generated from an e-commerce platform. The project leverages Apache Spark, Delta Lake, and the Medallion architecture to deliver a scalable, reliable, and performance-optimized solution for real-time and batch analytics.
+This repository presents a comprehensive end-to-end big data analytics pipeline built to process, optimize, and analyze large-scale clickstream data generated from a real-world e-commerce platform. The project integrates Apache Spark and Delta Lake to establish a scalable, reliable environment capable of supporting both batch and near-real-time analytical workloads. By following the Medallion Architecture, the pipeline moves data from raw ingestion through structured Bronze, Silver, and Gold layers, ensuring consistency, performance, and analytics readiness at every stage.
 
-Features
-1. End-to-End Data Architecture
+The core of the project focuses on addressing the challenges commonly encountered in large-scale distributed processing. It includes a detailed study of essential Spark optimizations such as the use of temporary SQL views to avoid redundant I/O, broadcast joins to eliminate expensive shuffles, repartitioning based on user identifiers to efficiently compute session-level metrics, salting to mitigate severe data skew, and predicate pushdown techniques to reduce the volume of data read from storage. Each optimization is accompanied by a technical explanation, the reasoning behind the chosen approach, its implementation strategy, and a clear quantification of performance improvement. These enhancements demonstrate how engineering decisions directly influence analytical speed, cluster cost, and overall system scalability.
 
-Raw, Bronze, Silver, and Gold layers following the Medallion Architecture.
+Beyond performance engineering, the project also implements strong data governance principles using Delta Lake’s ACID transaction guarantees, schema enforcement, and version-controlled time travel capabilities. These features ensure that data remains consistent, trustworthy, and recoverable throughout all stages of processing. The repository also includes detailed data quality evaluations covering raw data characteristics, cleaning processes, and the resulting analytical integrity. Additional sections examine cost-efficiency benefits, scalability considerations for handling ten times the current dataset size, and recommended enhancements for data security and masking to protect sensitive information.
 
-Complete data flow starting from ingestion to data modeling and final analytics.
+The analytical output of the pipeline is presented through a multi-page interactive dashboard designed to communicate insights clearly and intuitively. The dashboard guides viewers from high-level platform metrics to granular product, user, and temporal analyses. It provides insights such as overall conversion funnel performance, revenue concentration patterns, user segmentation behavior, hourly and daily activity trends, and the business impact of the technical optimizations implemented. Each visualization follows a structured data storytelling methodology that makes the entire dashboard self-explanatory and actionable for business stakeholders.
 
-Automated schema enforcement, optimization, and quality checks.
+The repository is organized to support full reproducibility. It includes the original project report, ETL and optimization notebooks, relevant scripts, and dashboard exports. Users can follow the included pipeline to replicate the ingestion process, transformations, optimizations, and analytical outputs. This structure makes the repository suitable for academic demonstration, professional portfolio use, or as a foundation for further development in large-scale data engineering projects.
 
-2. Advanced Spark Optimizations
-
-The project includes a deep-dive into performance optimizations such as:
-
-Temporary view caching for query acceleration.
-
-Broadcast joins for dimension-based lookups.
-
-Repartitioning based on user IDs for session grouping.
-
-Salting strategies to mitigate data skew.
-
-Predicate pushdown for reduced disk I/O.
-
-Each optimization includes:
-
-Problem analysis
-
-Technical implementation
-
-Performance impact
-
-Business KPIs extracted
-
-3. Data Governance & Reliability
-
-ACID transactions via Delta Lake.
-
-Schema enforcement and automatic schema evolution handling.
-
-Time travel and versioning for reproducibility.
-
-Comprehensive raw and processed data quality reports.
-
-4. Value-Added Components
-
-Cost efficiency analysis with quantified savings.
-
-Future scalability plan for 10× data volume.
-
-Security and data masking recommendations.
-
-5. Interactive BI Dashboard
-
-A multi-page analytics dashboard with:
-
-Executive KPIs
-
-Conversion funnel analytics
-
-Product performance breakdown
-
-User behavior and segmentation
-
-Temporal trends
-
-Technical performance indicators
-
-Designed with self-explanatory layouts and strong data storytelling principles.
-
-Project Structure
-├── data/                     # Raw, Bronze, Silver, and Gold layers (if included)
-├── notebooks/                # Spark/Databricks notebooks used in the pipeline
-├── dashboard/                # BI dashboard files or exports
-├── scripts/                  # ETL/ELT, optimization, and validation scripts
-├── Final_Report.pdf          # Full academic project report
-└── README.md                 # You are here
-
-Technologies Used
-
-Apache Spark (PySpark)
-
-Delta Lake
-
-Databricks Runtime
-
-Distributed Storage (Parquet/Delta)
-
-Visualization Tools (Power BI / Python plotting libraries)
-
-Dataset Overview
-
-42+ million events across one month of activity
-
-Semi-structured clickstream data including:
-
-Event time
-
-User/session information
-
-Product interactions
-
-Price, category, and brand data
-
-High volume, velocity, and variety, making it ideal for distributed processing.
-
-How to Use This Repository
-
-Start by reviewing the Final_Report.pdf for a complete technical and business overview.
-
-Use the notebooks under /notebooks to explore:
-
-ETL steps
-
-Medallion architecture implementation
-
-Optimization modules
-
-Run scripts in /scripts to reproduce:
-
-Repartitioning strategies
-
-Broadcast joins
-
-Salting techniques
-
-Explore the /dashboard folder to view the end-user BI dashboard output.
-
-Team Members
-
-Amr Ahmed (202100302)
-
-Marwan Ahmed (202101214)
-
-Mohamed Ahmed (202100098)
-
-Zewail City of Science, Technology and Innovation
-Communications and Information Engineering Program
-Big Data Analytics (CIE 427), Fall 2025
+This project was developed by Amr Ahmed, Marwan Ahmed, and Mohamed Ahmed as part of the Big Data Analytics (CIE 427) course within the Communications and Information Engineering Program at Zewail City of Science, Technology and Innovation during Fall 2025.
